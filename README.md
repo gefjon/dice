@@ -29,7 +29,7 @@ your money back. `count` defaults to `1` and `modifier` defaults to `0`.
 single argument `str`, the string which failed to parse. The returned
 `DiceStringError` inherits from `Error`, has a field `str` containing its
 argument and a field `name` containing `DiceStringError`. The `message` passed
-to `Error`'s constructor is `\`wanted a dice string but was passed ${str}\``.
+to `Error`'s constructor is `` `wanted a dice string but was passed ${str}` ``.
 
 ## Sample usage:
 
