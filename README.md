@@ -42,7 +42,7 @@ let { count, size, modifier } = parseDiceString('3d6+1')
 let result = 0
 
 for (let i = 0; i < count; i += 1) {
-  result += Math.floor(Math.random() * size)
+  result += Math.floor(Math.random() * size) + 1
 }
 
 result += modifier
