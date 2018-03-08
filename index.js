@@ -11,6 +11,14 @@ class DiceRoll {
   }
 }
 
+class DiceStringError extends Error {
+  constructor (str) {
+    super(`wanted a dice string but was passed '${str}'`)
+    this.str = str
+    this.name = 'DiceStringError'
+  }
+}
+
 function parseModifierString (str) {
   let re = /[+-]\d+/g
   let [i] = re.exec(str)
@@ -25,7 +33,11 @@ function parseModifierString (str) {
 
 function parseDiceString (str) {
   let re = /^(\d*)[dD](\d+)((?:[+-]\d+)*)$/
-  let [, count, size, modifierString] = re.exec(str)
+  let res = re.exec(str)
+  if (!res) {
+    throw new DiceStringError(str)
+  }
+  let [, count, size, modifierString] = res
   return new DiceRoll(
     count ? parseInt(count) : 1,
     parseInt(size),
@@ -34,3 +46,4 @@ function parseDiceString (str) {
 }
 
 module.exports = parseDiceString
+module.exports.Error = DiceStringError
