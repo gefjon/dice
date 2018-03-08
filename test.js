@@ -1,5 +1,5 @@
 let expect = require('chai').expect
-let parseDiceString = require('../index.js')
+let parseDiceString = require('./index.js')
 
 /* global describe, it */
 
